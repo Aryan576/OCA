@@ -1,0 +1,50 @@
+Exception Hendling
+
+What is an Exception?
+
+Any abnormal condition that interrupts the normal flow
+of your program's instructions at rum time is an exception.
+
+Types of Exceptions
+
+1. System-Defined Exceptions and
+2.User-Defined Exceptions
+
+
+1. System-Defined Exceptions
+
+These exceptions are mainly defined in the oracle standerd package.
+Whenever an exception occurs inside the program,
+Oracle server matches & identifies the appropriate
+exception from the available set of exceptions from
+oracle standard package.
+
+2. User-Defined Exception
+
+Like all other programming lang oracle also allows you to 
+declare & impliment your own exceptions.
+
+unlike system-defined exception, these exceptions are 
+raised explicitly in the PL/SQL block.
+
+3 Ways to declare excep..
+
+1. Using Variable of EXCEPTION type
+
+Declare a user defined exception by declaring a variable of
+EXCEPTION datatype   in your code and
+
+2. Using PRAGMA EXCEPTION_INIT function
+
+Using PRAGMA EXCEPTION_INIT function you can map a 
+non-predefined error number with the variable of
+EXCEPTION datatype.
+
+3. Using RAISE_APPLICATION_ERROR method.
+
+Using this method you can declare a user defined exception
+with youre own customized error number and message.
+
+
+
+

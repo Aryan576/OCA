@@ -1,0 +1,25 @@
+1 create table
+
+create table students(
+ Rollno number, 
+ firstname varchar(20),
+ lname varchar(20),
+ address varchar(20),
+ contactNo number,
+ maths number,
+ eng number,
+ sci number,
+ total number,
+grade varchar(20));
+
+2
+insert into table_name values(column_data1);
+3
+insert into students values(3,'aarav','shah','25 rajul park',7600705699,65,75,10,150,'C');
+insert into students values(4,'shreyansh','luniya','2 safal park',7600704699,60,70,10,140,'C');
+insert into students values(5,'aarav','shah','25 rajul park',7600505699,90,70,10,170,'B');
+insert into students values(6,'kush','soni','rajasthan',7600704691,100,100,100,300,'A');
+insert into students values(7,'suraj','jain','2 orchid green',7600704692,10,20,30,60,'F');
+insert into students values(8,'saumya','batra','DASHAMTNAGAR',7600704693,60,70,10,140,'C');
+insert into students values(9,'shivraj','gohil','MEGNAGAR',7600704694,40,50,10,100'C');
+insert into students values(10,'DEVANSH','kedia','2 safal',7600704695,50,50,50,300,'A');

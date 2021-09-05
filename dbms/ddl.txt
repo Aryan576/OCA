@@ -1,0 +1,6 @@
+
+
+	DDL ( Data Definition language )
+	DML ( Data Manipulation language )
+	DCL ( Data Control Language)
+	TCL ( Transaction Control Language )

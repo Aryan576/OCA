@@ -1,0 +1,41 @@
+For Loop 
+
+For loop allows you to execute the block of statements repeatedly
+for a fixed number of time.
+
+Syntax
+
+for loop_counter in [reverse] lower_limt .. upper_limit loop
+	statement1;
+	statement2;
+	...
+	statement3;
+end loop;
+
+set serveroutput on;
+begin
+	for v_counter in 1 .. 10 loop
+	  dbms_output.put_line(v_counter);
+	end loop;
+end;
+/
+
+set serveroutput on;
+begin
+	for v_counter in reverse 1 .. 10 loop
+	  dbms_output.put_line(v_counter);
+	end loop;
+end;
+/
+
+==============================================
+set serveroutput on;
+declare
+	v_result number;
+begin
+	for v_counter in 1 .. 10 loop
+	v_result :=10 * v_counter;
+	  dbms_output.put_line('10'||' x '||v_counter||' = '|| v_result);
+	end loop;
+end;
+/

@@ -1,0 +1,15 @@
+Variables
+   What are variables?
+	The value they holds is of variable nature.
+variable must be declared prior to its use.
+
+example
+
+set serveroutput on;
+DECLARE 
+	v_test varchar2(45);
+BEGIN
+	v_test:='Royal Technosoft';
+	DBMS_OUTPUT.PUT_LINE(v_test);
+END;
+/

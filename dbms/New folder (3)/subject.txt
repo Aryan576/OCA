@@ -1,0 +1,27 @@
+
+ create table subject(
+    Sr_No number primary key ,
+    Sname varchar(20),
+  S_hrs number);
+
+create table subno_rollno(
+	Sr_no number,
+	rollno number);	
+
+
+
+
+
+
+
+insert into subject values(101,'c',40);
+insert into subject values(102,'c++',50);
+insert into subject values(103,'java',4);
+insert into subject values(104,'HTML',6);
+insert into subject values(105,'ADVANCE JAVA ',40);
+insert into subject values(106,'PYTHON',40);
+
+insert in subno_rollno;
+
+
+ select * from students where rollno=(select rollno from subno_rollno where sr_no=101);

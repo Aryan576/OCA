@@ -1,0 +1,8 @@
+1
+select * from  students;
+2
+set linesize 400;
+3
+select rollno ,firstname,lname from students;
+4
+SELECT ROLLNO,FRISTNAME,LNAME,MATHS,SCI,ENG,TOTAL,GRADE FROM STUDENTS;

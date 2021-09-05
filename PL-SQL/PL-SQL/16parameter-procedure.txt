@@ -1,0 +1,10 @@
+ create or replace procedure emp_sal (dep_id number, sal_raise number)
+is
+begin
+	update employees set salary= salary*sal_raise where
+	department_id=dep_id;
+commit;
+end;
+/
+
+execute emp_sal(10,10);

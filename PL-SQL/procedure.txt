@@ -1,0 +1,104 @@
+SQL> create or replace procedure pr_demo
+  2  is
+  3  var_name varchar(20) := 'Ravi';
+  4  var_web varchar(20) := 'Techno';
+  5  begin
+  6  dbms_output.put_line('Whats up Student? i am ' ||var_name||'from'||var_web);
+  7  end pr_demo;
+  8  /
+
+Procedure created.
+
+SQL> begin
+  2  pr_demo;
+  3  end;
+  4  /
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on
+SQL> begin
+  2  pr_demo;
+  3  end;
+  4  /
+Whats up Student? i am RavifromTechno                                           
+
+PL/SQL procedure successfully completed.
+
+SQL> select department_id,salary from employees where depart_id=10;
+select department_id,salary from employees where depart_id=10
+                                                 *
+ERROR at line 1:
+ORA-00904: "DEPART_ID": invalid identifier 
+
+
+SQL> select department_id,salary from employees where department_id=10;
+
+DEPARTMENT_ID     SALARY                                                        
+------------- ----------                                                        
+           10       4400                                                        
+
+SQL> create or replace procedure emp_sal (dep_id number,sal_raise number)
+  2  is
+  3  begin
+  4  update employees set salary =salary+(salary*sal_raise)/100 where department_id =dep_id;
+  5  commit;
+  6  end;
+  7  /
+
+Procedure created.
+
+SQL> execute emp_sal(10,10);
+
+PL/SQL procedure successfully completed.
+
+SQL> select department_id,salary from employees where depart_id=10;
+select department_id,salary from employees where depart_id=10
+                                                 *
+ERROR at line 1:
+ORA-00904: "DEPART_ID": invalid identifier 
+
+
+SQL> select department_id,salary from employees where department_id=10;
+
+DEPARTMENT_ID     SALARY                                                        
+------------- ----------                                                        
+           10       4840                                                        
+
+SQL> select procedure_name from user_procedures;
+
+PROCEDURE_NAME                                                                  
+------------------------------                                                  
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+6 rows selected.
+
+SQL> desc user_procedures
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ OBJECT_NAME                                        VARCHAR2(128)
+ PROCEDURE_NAME                                     VARCHAR2(30)
+ OBJECT_ID                                          NUMBER
+ SUBPROGRAM_ID                                      NUMBER
+ OVERLOAD                                           VARCHAR2(40)
+ OBJECT_TYPE                                        VARCHAR2(19)
+ AGGREGATE                                          VARCHAR2(3)
+ PIPELINED                                          VARCHAR2(3)
+ IMPLTYPEOWNER                                      VARCHAR2(30)
+ IMPLTYPENAME                                       VARCHAR2(30)
+ PARALLEL                                           VARCHAR2(3)
+ INTERFACE                                          VARCHAR2(3)
+ DETERMINISTIC                                      VARCHAR2(3)
+ AUTHID                                             VARCHAR2(12)
+
+SQL> commit
+  2  ;
+
+Commit complete.
+
+SQL> spool off;

@@ -1,0 +1,16 @@
+1
+select *from students where rollno=11;
+
+2
+
+select * from students where address in ('sector 22 delhi','rajasthan');
+3
+
+select sum(total) from students;
+4
+select avg (total) from students;
+5
+select min (total)from students;
+6
+select max (total)from students;
+7

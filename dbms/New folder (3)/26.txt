@@ -1,0 +1,8 @@
+alter table table_name add constraint con_name_fk foregin key (field_name) references parent_table_name(field_name);
+
+ex :
+
+alter table subno_rollno add constraint Sr_no_fk foregin key (Sr_no) references subject(Sr_no);
+alter table subno_rollno add constraint rno_fk foregin key (rollno) references students(rollno);
+
+

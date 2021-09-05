@@ -1,0 +1,103 @@
+Types of Function
+
+1)number fun
+	1)round
+	2)trunc
+	3)mode
+	4)ceil
+	5)floor
+
+
+
+2)characther
+	2.1) case conversion
+	2.1.1)isupper,lower ,in 
+	2.2)character manuplation function
+	2.2.1)tirm,ltrim,rtrim,lpad,rpad,substr,instr,repalce,concat ,lenght;
+
+
+3)general
+
+	3.1)null related function 
+		3.1.1)nvl(null value laoctor)
+		3.1.2)nvl2
+		3.1.3)nvlif
+		
+	3.2)conditinal related functions
+		3.2.1)case
+
+		3.2.1)search case 
+		
+		3.2.1)decode
+
+	
+4)conversion
+
+	1)to_char
+	2)to_number
+	3)to_date
+5)Date fun 
+
+	1)sys date
+	2)current_date,add_months,months_between,next_day,last_day,round,trunc
+
+
+
+
+
+types of Joint
+
+1)inner join
+a) 
+2)outer join
+a)left outer join b)right outer join c)full outer join
+	
+3)cross join
+4)self join
+
+Sub qurey Types
+1)single row 
+2)mulitiple row
+3)multiple column
+
+types of operator 
+1)single row >,<,>=,<=,==
+2)multiple row in ,any;
+
+types of set operators 
+1)union
+2)intersect
+3)union all
+4)minus
+
+type of staetment
+1)dml
+
+a)select b)update c)insert d)merge
+2)ddl
+a)create b)alter c)drop d) rename e)comment f)tunc
+3)dcl
+a)grant b)rewokeu
+4)tcl
+a)rollback b)commit c)savepoint
+
+
+
+db Object
+
+1)table
+2)view:it does not store data but it stores the Sub queries;
+	
+3) Sequence
+4)synnomy
+5)index
+
+
+sequence of select staement
+
+1)select
+2)from
+3)where
+4)group by
+5)having
+6)order by

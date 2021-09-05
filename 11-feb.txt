@@ -1,0 +1,310 @@
+SQL> select round(54.687,2),trunc(45.687,2) from dual;
+
+ROUND(54.687,2) TRUNC(45.687,2)                                                 
+--------------- ---------------                                                 
+          54.69           45.68                                                 
+
+SQL> select ceil(4.55),floor(4.55)
+  2  from dual;
+
+CEIL(4.55) FLOOR(4.55)                                                          
+---------- -----------                                                          
+         5           4                                                          
+
+SQL> select mod(3,3)from dual;
+
+  MOD(3,3)                                                                      
+----------                                                                      
+         0                                                                      
+
+SQL> select mod(3,2)from dual;
+
+  MOD(3,2)                                                                      
+----------                                                                      
+         1                                                                      
+
+SQL> desc employees;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPLOYEE_ID                               NOT NULL NUMBER(6)
+ FIRST_NAME                                         VARCHAR2(20)
+ LAST_NAME                                 NOT NULL VARCHAR2(25)
+ EMAIL                                     NOT NULL VARCHAR2(25)
+ PHONE_NUMBER                                       VARCHAR2(20)
+ HIRE_DATE                                 NOT NULL DATE
+ JOB_ID                                    NOT NULL VARCHAR2(10)
+ SALARY                                             NUMBER(8,2)
+ COMMISSION_PCT                                     NUMBER(2,2)
+ MANAGER_ID                                         NUMBER(6)
+ DEPARTMENT_ID                                      NUMBER(4)
+
+SQL> select employee_id from employees where mod(3,3);
+select employee_id from employees where mod(3,3)
+                                               *
+ERROR at line 1:
+ORA-00920: invalid relational operator 
+
+
+SQL> select employee_id from employees where mod(employee_id,2)=0;
+
+EMPLOYEE_ID                                                                     
+-----------                                                                     
+        100                                                                     
+        102                                                                     
+        104                                                                     
+        106                                                                     
+        108                                                                     
+        110                                                                     
+        112                                                                     
+        114                                                                     
+        116                                                                     
+        118                                                                     
+        120                                                                     
+
+EMPLOYEE_ID                                                                     
+-----------                                                                     
+        122                                                                     
+        124                                                                     
+        126                                                                     
+        128                                                                     
+        130                                                                     
+        132                                                                     
+        134                                                                     
+        136                                                                     
+        138                                                                     
+        140                                                                     
+        142                                                                     
+
+EMPLOYEE_ID                                                                     
+-----------                                                                     
+        144                                                                     
+        146                                                                     
+        148                                                                     
+        150                                                                     
+        152                                                                     
+        154                                                                     
+        156                                                                     
+        158                                                                     
+        160                                                                     
+        162                                                                     
+        164                                                                     
+
+EMPLOYEE_ID                                                                     
+-----------                                                                     
+        166                                                                     
+        168                                                                     
+        170                                                                     
+        172                                                                     
+        174                                                                     
+        176                                                                     
+        178                                                                     
+        180                                                                     
+        182                                                                     
+        184                                                                     
+        186                                                                     
+
+EMPLOYEE_ID                                                                     
+-----------                                                                     
+        188                                                                     
+        190                                                                     
+        192                                                                     
+        194                                                                     
+        196                                                                     
+        198                                                                     
+        200                                                                     
+        202                                                                     
+        204                                                                     
+        206                                                                     
+
+54 rows selected.
+
+SQL> select employee_id from employees where mod(employee_id,2)=1;
+
+EMPLOYEE_ID                                                                     
+-----------                                                                     
+        101                                                                     
+        103                                                                     
+        105                                                                     
+        107                                                                     
+        109                                                                     
+        111                                                                     
+        113                                                                     
+        115                                                                     
+        117                                                                     
+        119                                                                     
+        121                                                                     
+
+EMPLOYEE_ID                                                                     
+-----------                                                                     
+        123                                                                     
+        125                                                                     
+        127                                                                     
+        129                                                                     
+        131                                                                     
+        133                                                                     
+        135                                                                     
+        137                                                                     
+        139                                                                     
+        141                                                                     
+        143                                                                     
+
+EMPLOYEE_ID                                                                     
+-----------                                                                     
+        145                                                                     
+        147                                                                     
+        149                                                                     
+        151                                                                     
+        153                                                                     
+        155                                                                     
+        157                                                                     
+        159                                                                     
+        161                                                                     
+        163                                                                     
+        165                                                                     
+
+EMPLOYEE_ID                                                                     
+-----------                                                                     
+        167                                                                     
+        169                                                                     
+        171                                                                     
+        173                                                                     
+        175                                                                     
+        177                                                                     
+        179                                                                     
+        181                                                                     
+        183                                                                     
+        185                                                                     
+        187                                                                     
+
+EMPLOYEE_ID                                                                     
+-----------                                                                     
+        189                                                                     
+        191                                                                     
+        193                                                                     
+        195                                                                     
+        197                                                                     
+        199                                                                     
+        201                                                                     
+        203                                                                     
+        205                                                                     
+
+53 rows selected.
+
+SQL> select sysdate ,to_char(sysdate,'fmdd-mm-rrrr hh:mi:ss w wwq') from dual;
+
+SYSDATE   TO_CHAR(SYSDATE,'FMDD-MM-                                             
+--------- -------------------------                                             
+11-FEB-19 11-2-2019 6:32:24 2 61                                                
+
+SQL> select sysdate ,to_char(sysdate,'fmdd-mm-rrrr hh:mi:ss w ww q') from dual;
+
+SYSDATE   TO_CHAR(SYSDATE,'FMDD-MM-R                                            
+--------- --------------------------                                            
+11-FEB-19 11-2-2019 6:32:37 2 6 1                                               
+
+SQL> select sysdate ,to_char(sysdate) from dual;
+
+SYSDATE   TO_CHAR(S                                                             
+--------- ---------                                                             
+11-FEB-19 11-FEB-19                                                             
+
+SQL> select sysdate ,to_char(sysdate,'fmdd-mm-rrrr hh:mi:ss w ww q') from dual;
+
+SYSDATE   TO_CHAR(SYSDATE,'FMDD-MM-R                                            
+--------- --------------------------                                            
+11-FEB-19 11-2-2019 6:34:34 2 6 1                                               
+
+SQL> select sysdate ,to_char(sysdate,'fmdd-mm-rrrr hh:mi:ss w ww q=2') from dual;
+select sysdate ,to_char(sysdate,'fmdd-mm-rrrr hh:mi:ss w ww q=2') from dual
+                                *
+ERROR at line 1:
+ORA-01821: date format not recognized 
+
+
+SQL> select sysdate ,to_char(sysdate,'fmdd-mm-rrrr hh:mi:ss w ww 2q') from dual;
+select sysdate ,to_char(sysdate,'fmdd-mm-rrrr hh:mi:ss w ww 2q') from dual
+                                *
+ERROR at line 1:
+ORA-01821: date format not recognized 
+
+
+SQL> select sysdate ,to_char(sysdate,'fmdd-mm-rrrr hh:mi:ss w ww q')=2 from dual;
+select sysdate ,to_char(sysdate,'fmdd-mm-rrrr hh:mi:ss w ww q')=2 from dual
+                                                               *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select sysdate ,to_char(sysdate,'fmdd-mm-rrrr hh:mi:ss w ww q') from dual where sysdate(q)=2;
+select sysdate ,to_char(sysdate,'fmdd-mm-rrrr hh:mi:ss w ww q') from dual where sysdate(q)=2
+                                                                                       *
+ERROR at line 1:
+ORA-00920: invalid relational operator 
+
+
+SQL> select to_char('55555.00','99,999.99')from dual;
+
+TO_CHAR('5                                                                      
+----------                                                                      
+ 55,555.00                                                                      
+
+SQL> select to_char('55555.00','99,99g9d99')from dual;
+select to_char('55555.00','99,99g9d99')from dual
+                          *
+ERROR at line 1:
+ORA-01481: invalid number format model 
+
+
+SQL> select to_char('55555.00','99G999D99')from dual;
+
+TO_CHAR('5                                                                      
+----------                                                                      
+ 55,555.00                                                                      
+
+SQL> select to_char('55555.00','l99G999D99')from dual;
+
+TO_CHAR('55555.00','                                                            
+--------------------                                                            
+          $55,555.00                                                            
+
+SQL> select*from nls_session_parameter;
+select*from nls_session_parameter
+            *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> select*from nls_session_parameters;
+
+PARAMETER                      VALUE                                            
+------------------------------ ----------------------------------------         
+NLS_LANGUAGE                   AMERICAN                                         
+NLS_TERRITORY                  AMERICA                                          
+NLS_CURRENCY                   $                                                
+NLS_ISO_CURRENCY               AMERICA                                          
+NLS_NUMERIC_CHARACTERS         .,                                               
+NLS_CALENDAR                   GREGORIAN                                        
+NLS_DATE_FORMAT                DD-MON-RR                                        
+NLS_DATE_LANGUAGE              AMERICAN                                         
+NLS_SORT                       BINARY                                           
+NLS_TIME_FORMAT                HH.MI.SSXFF AM                                   
+NLS_TIMESTAMP_FORMAT           DD-MON-RR HH.MI.SSXFF AM                         
+
+PARAMETER                      VALUE                                            
+------------------------------ ----------------------------------------         
+NLS_TIME_TZ_FORMAT             HH.MI.SSXFF AM TZR                               
+NLS_TIMESTAMP_TZ_FORMAT        DD-MON-RR HH.MI.SSXFF AM TZR                     
+NLS_DUAL_CURRENCY              $                                                
+NLS_COMP                       BINARY                                           
+NLS_LENGTH_SEMANTICS           BYTE                                             
+NLS_NCHAR_CONV_EXCP            FALSE                                            
+
+17 rows selected.
+
+SQL> select sysdate ,to_number('23,333.12','99,999.99')from dual;
+
+SYSDATE   TO_NUMBER('23,333.12','99,999.99')                                    
+--------- ----------------------------------                                    
+11-FEB-19                           23333.12                                    
+
+SQL> spool off;

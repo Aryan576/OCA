@@ -1,0 +1,8 @@
+update product set amount =(select(amount*&per/100)+amount from product where p_name='&&p_name')where p_name='&p_name';
+
+update product set amount = (amount - amount*.10) where p_id in (select p_id from product where amount >60000);
+
+	customer id 101 placed total order of rs 450000
+	customer id 102 placed total order of rs 50000
+
+select 'customer id ' || c_id ||' placed order of Rs. ' || sum(amt) "Order Details" from order_p group by c_id;

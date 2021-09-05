@@ -1,0 +1,452 @@
+SQL> desc jon
+ERROR:
+ORA-04043: object jon does not exist 
+
+
+SQL> desc job_history
+ Name                                                                                                  Null?    Type
+ ----------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------
+ EMPLOYEE_ID                                                                                           NOT NULL NUMBER(6)
+ START_DATE                                                                                            NOT NULL DATE
+ END_DATE                                                                                              NOT NULL DATE
+ JOB_ID                                                                                                NOT NULL VARCHAR2(10)
+ DEPARTMENT_ID                                                                                                  NUMBER(4)
+
+SQL> desc employees;]
+SP2-0565: Illegal identifier.
+SQL> desc employees;
+ Name                                                                                                  Null?    Type
+ ----------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------
+ EMPLOYEE_ID                                                                                           NOT NULL NUMBER(6)
+ FIRST_NAME                                                                                                     VARCHAR2(20)
+ LAST_NAME                                                                                             NOT NULL VARCHAR2(25)
+ EMAIL                                                                                                 NOT NULL VARCHAR2(25)
+ PHONE_NUMBER                                                                                                   VARCHAR2(20)
+ HIRE_DATE                                                                                             NOT NULL DATE
+ JOB_ID                                                                                                NOT NULL VARCHAR2(10)
+ SALARY                                                                                                         NUMBER(8,2)
+ COMMISSION_PCT                                                                                                 NUMBER(2,2)
+ MANAGER_ID                                                                                                     NUMBER(6)
+ DEPARTMENT_ID                                                                                                  NUMBER(4)
+
+SQL> select department_id,job_id from employees
+  2  union
+  3  select department_id,job_id from job_history
+  4  ;
+
+DEPARTMENT_ID JOB_ID                                                                                                                                                                
+------------- ----------                                                                                                                                                            
+           10 AD_ASST                                                                                                                                                               
+           20 MK_MAN                                                                                                                                                                
+           20 MK_REP                                                                                                                                                                
+           30 PU_CLERK                                                                                                                                                              
+           30 PU_MAN                                                                                                                                                                
+           40 HR_REP                                                                                                                                                                
+           50 SH_CLERK                                                                                                                                                              
+           50 ST_CLERK                                                                                                                                                              
+           50 ST_MAN                                                                                                                                                                
+           60 IT_PROG                                                                                                                                                               
+           70 PR_REP                                                                                                                                                                
+           80 SA_MAN                                                                                                                                                                
+           80 SA_REP                                                                                                                                                                
+           90 AC_ACCOUNT                                                                                                                                                            
+           90 AD_ASST                                                                                                                                                               
+           90 AD_PRES                                                                                                                                                               
+           90 AD_VP                                                                                                                                                                 
+          100 FI_ACCOUNT                                                                                                                                                            
+          100 FI_MGR                                                                                                                                                                
+          110 AC_ACCOUNT                                                                                                                                                            
+          110 AC_MGR                                                                                                                                                                
+              SA_REP                                                                                                                                                                
+
+22 rows selected.
+
+SQL> select department_id,job_id from employees
+  2  union
+  3  select department_id,to_char('dummy') from job_history;
+
+DEPARTMENT_ID JOB_ID                                                                                                                                                                
+------------- ----------                                                                                                                                                            
+           10 AD_ASST                                                                                                                                                               
+           20 MK_MAN                                                                                                                                                                
+           20 MK_REP                                                                                                                                                                
+           20 dummy                                                                                                                                                                 
+           30 PU_CLERK                                                                                                                                                              
+           30 PU_MAN                                                                                                                                                                
+           40 HR_REP                                                                                                                                                                
+           50 SH_CLERK                                                                                                                                                              
+           50 ST_CLERK                                                                                                                                                              
+           50 ST_MAN                                                                                                                                                                
+           50 dummy                                                                                                                                                                 
+           60 IT_PROG                                                                                                                                                               
+           60 dummy                                                                                                                                                                 
+           70 PR_REP                                                                                                                                                                
+           80 SA_MAN                                                                                                                                                                
+           80 SA_REP                                                                                                                                                                
+           80 dummy                                                                                                                                                                 
+           90 AD_PRES                                                                                                                                                               
+           90 AD_VP                                                                                                                                                                 
+           90 dummy                                                                                                                                                                 
+          100 FI_ACCOUNT                                                                                                                                                            
+          100 FI_MGR                                                                                                                                                                
+          110 AC_ACCOUNT                                                                                                                                                            
+          110 AC_MGR                                                                                                                                                                
+          110 dummy                                                                                                                                                                 
+              SA_REP                                                                                                                                                                
+
+26 rows selected.
+
+SQL> select hire_date from employees
+  2  union
+  3  select end_date from job_history;
+
+HIRE_DATE                                                                                                                                                                           
+---------                                                                                                                                                                           
+13-JAN-01                                                                                                                                                                           
+17-JUN-01                                                                                                                                                                           
+27-OCT-01                                                                                                                                                                           
+07-JUN-02                                                                                                                                                                           
+16-AUG-02                                                                                                                                                                           
+17-AUG-02                                                                                                                                                                           
+07-DEC-02                                                                                                                                                                           
+01-MAY-03                                                                                                                                                                           
+18-MAY-03                                                                                                                                                                           
+17-JUN-03                                                                                                                                                                           
+14-JUL-03                                                                                                                                                                           
+17-SEP-03                                                                                                                                                                           
+17-OCT-03                                                                                                                                                                           
+27-JAN-04                                                                                                                                                                           
+30-JAN-04                                                                                                                                                                           
+04-FEB-04                                                                                                                                                                           
+17-FEB-04                                                                                                                                                                           
+04-MAR-04                                                                                                                                                                           
+11-MAY-04                                                                                                                                                                           
+14-JUN-04                                                                                                                                                                           
+18-JUL-04                                                                                                                                                                           
+01-AUG-04                                                                                                                                                                           
+01-OCT-04                                                                                                                                                                           
+05-JAN-05                                                                                                                                                                           
+29-JAN-05                                                                                                                                                                           
+30-JAN-05                                                                                                                                                                           
+16-FEB-05                                                                                                                                                                           
+20-FEB-05                                                                                                                                                                           
+03-MAR-05                                                                                                                                                                           
+10-MAR-05                                                                                                                                                                           
+11-MAR-05                                                                                                                                                                           
+15-MAR-05                                                                                                                                                                           
+19-MAR-05                                                                                                                                                                           
+24-MAR-05                                                                                                                                                                           
+10-APR-05                                                                                                                                                                           
+14-JUN-05                                                                                                                                                                           
+25-JUN-05                                                                                                                                                                           
+16-JUL-05                                                                                                                                                                           
+24-JUL-05                                                                                                                                                                           
+13-AUG-05                                                                                                                                                                           
+17-AUG-05                                                                                                                                                                           
+20-AUG-05                                                                                                                                                                           
+21-SEP-05                                                                                                                                                                           
+28-SEP-05                                                                                                                                                                           
+30-SEP-05                                                                                                                                                                           
+10-OCT-05                                                                                                                                                                           
+26-OCT-05                                                                                                                                                                           
+30-OCT-05                                                                                                                                                                           
+11-NOV-05                                                                                                                                                                           
+15-DEC-05                                                                                                                                                                           
+24-DEC-05                                                                                                                                                                           
+03-JAN-06                                                                                                                                                                           
+24-JAN-06                                                                                                                                                                           
+05-FEB-06                                                                                                                                                                           
+12-FEB-06                                                                                                                                                                           
+23-FEB-06                                                                                                                                                                           
+07-MAR-06                                                                                                                                                                           
+15-MAR-06                                                                                                                                                                           
+23-MAR-06                                                                                                                                                                           
+24-MAR-06                                                                                                                                                                           
+30-MAR-06                                                                                                                                                                           
+06-APR-06                                                                                                                                                                           
+23-APR-06                                                                                                                                                                           
+24-APR-06                                                                                                                                                                           
+23-MAY-06                                                                                                                                                                           
+24-JUN-06                                                                                                                                                                           
+01-JUL-06                                                                                                                                                                           
+09-JUL-06                                                                                                                                                                           
+11-JUL-06                                                                                                                                                                           
+24-JUL-06                                                                                                                                                                           
+26-AUG-06                                                                                                                                                                           
+28-SEP-06                                                                                                                                                                           
+03-NOV-06                                                                                                                                                                           
+15-NOV-06                                                                                                                                                                           
+09-DEC-06                                                                                                                                                                           
+31-DEC-06                                                                                                                                                                           
+14-JAN-07                                                                                                                                                                           
+07-FEB-07                                                                                                                                                                           
+23-FEB-07                                                                                                                                                                           
+17-MAR-07                                                                                                                                                                           
+19-MAR-07                                                                                                                                                                           
+24-MAR-07                                                                                                                                                                           
+10-APR-07                                                                                                                                                                           
+21-MAY-07                                                                                                                                                                           
+24-MAY-07                                                                                                                                                                           
+21-JUN-07                                                                                                                                                                           
+10-AUG-07                                                                                                                                                                           
+15-OCT-07                                                                                                                                                                           
+16-NOV-07                                                                                                                                                                           
+23-NOV-07                                                                                                                                                                           
+07-DEC-07                                                                                                                                                                           
+12-DEC-07                                                                                                                                                                           
+19-DEC-07                                                                                                                                                                           
+31-DEC-07                                                                                                                                                                           
+04-JAN-08                                                                                                                                                                           
+13-JAN-08                                                                                                                                                                           
+24-JAN-08                                                                                                                                                                           
+29-JAN-08                                                                                                                                                                           
+03-FEB-08                                                                                                                                                                           
+06-FEB-08                                                                                                                                                                           
+23-FEB-08                                                                                                                                                                           
+08-MAR-08                                                                                                                                                                           
+24-MAR-08                                                                                                                                                                           
+21-APR-08                                                                                                                                                                           
+
+104 rows selected.
+
+SQL> select hire_date from employees
+  2  intersect
+  3  select end_date from job_history;
+
+HIRE_DATE                                                                                                                                                                           
+---------                                                                                                                                                                           
+19-DEC-07                                                                                                                                                                           
+
+SQL> select hire_date from employees
+  2  union all
+  3  select end_date from job_history;
+
+HIRE_DATE                                                                                                                                                                           
+---------                                                                                                                                                                           
+21-JUN-07                                                                                                                                                                           
+13-JAN-08                                                                                                                                                                           
+17-SEP-03                                                                                                                                                                           
+17-FEB-04                                                                                                                                                                           
+17-AUG-05                                                                                                                                                                           
+07-JUN-02                                                                                                                                                                           
+07-JUN-02                                                                                                                                                                           
+07-JUN-02                                                                                                                                                                           
+07-JUN-02                                                                                                                                                                           
+17-JUN-03                                                                                                                                                                           
+21-SEP-05                                                                                                                                                                           
+13-JAN-01                                                                                                                                                                           
+03-JAN-06                                                                                                                                                                           
+21-MAY-07                                                                                                                                                                           
+25-JUN-05                                                                                                                                                                           
+05-FEB-06                                                                                                                                                                           
+07-FEB-07                                                                                                                                                                           
+17-AUG-02                                                                                                                                                                           
+16-AUG-02                                                                                                                                                                           
+28-SEP-05                                                                                                                                                                           
+30-SEP-05                                                                                                                                                                           
+07-MAR-06                                                                                                                                                                           
+07-DEC-07                                                                                                                                                                           
+07-DEC-02                                                                                                                                                                           
+18-MAY-03                                                                                                                                                                           
+24-DEC-05                                                                                                                                                                           
+24-JUL-05                                                                                                                                                                           
+15-NOV-06                                                                                                                                                                           
+10-AUG-07                                                                                                                                                                           
+18-JUL-04                                                                                                                                                                           
+10-APR-05                                                                                                                                                                           
+01-MAY-03                                                                                                                                                                           
+10-OCT-05                                                                                                                                                                           
+16-NOV-07                                                                                                                                                                           
+16-JUL-05                                                                                                                                                                           
+28-SEP-06                                                                                                                                                                           
+14-JAN-07                                                                                                                                                                           
+08-MAR-08                                                                                                                                                                           
+20-AUG-05                                                                                                                                                                           
+30-OCT-05                                                                                                                                                                           
+16-FEB-05                                                                                                                                                                           
+10-APR-07                                                                                                                                                                           
+14-JUN-04                                                                                                                                                                           
+26-AUG-06                                                                                                                                                                           
+12-DEC-07                                                                                                                                                                           
+06-FEB-08                                                                                                                                                                           
+14-JUL-03                                                                                                                                                                           
+26-OCT-05                                                                                                                                                                           
+12-FEB-06                                                                                                                                                                           
+06-APR-06                                                                                                                                                                           
+17-OCT-03                                                                                                                                                                           
+29-JAN-05                                                                                                                                                                           
+15-MAR-06                                                                                                                                                                           
+09-JUL-06                                                                                                                                                                           
+01-OCT-04                                                                                                                                                                           
+05-JAN-05                                                                                                                                                                           
+10-MAR-05                                                                                                                                                                           
+15-OCT-07                                                                                                                                                                           
+29-JAN-08                                                                                                                                                                           
+30-JAN-05                                                                                                                                                                           
+24-MAR-05                                                                                                                                                                           
+20-AUG-05                                                                                                                                                                           
+30-MAR-06                                                                                                                                                                           
+09-DEC-06                                                                                                                                                                           
+23-NOV-07                                                                                                                                                                           
+30-JAN-04                                                                                                                                                                           
+04-MAR-04                                                                                                                                                                           
+01-AUG-04                                                                                                                                                                           
+10-MAR-05                                                                                                                                                                           
+15-DEC-05                                                                                                                                                                           
+03-NOV-06                                                                                                                                                                           
+11-NOV-05                                                                                                                                                                           
+19-MAR-07                                                                                                                                                                           
+24-JAN-08                                                                                                                                                                           
+23-FEB-08                                                                                                                                                                           
+24-MAR-08                                                                                                                                                                           
+21-APR-08                                                                                                                                                                           
+11-MAR-05                                                                                                                                                                           
+23-MAR-06                                                                                                                                                                           
+24-JAN-06                                                                                                                                                                           
+23-FEB-07                                                                                                                                                                           
+24-MAR-07                                                                                                                                                                           
+21-APR-08                                                                                                                                                                           
+11-MAY-04                                                                                                                                                                           
+19-MAR-05                                                                                                                                                                           
+24-MAR-06                                                                                                                                                                           
+23-APR-06                                                                                                                                                                           
+24-MAY-07                                                                                                                                                                           
+04-JAN-08                                                                                                                                                                           
+24-JAN-06                                                                                                                                                                           
+23-FEB-06                                                                                                                                                                           
+21-JUN-07                                                                                                                                                                           
+03-FEB-08                                                                                                                                                                           
+27-JAN-04                                                                                                                                                                           
+20-FEB-05                                                                                                                                                                           
+24-JUN-06                                                                                                                                                                           
+07-FEB-07                                                                                                                                                                           
+14-JUN-05                                                                                                                                                                           
+13-AUG-05                                                                                                                                                                           
+11-JUL-06                                                                                                                                                                           
+19-DEC-07                                                                                                                                                                           
+04-FEB-04                                                                                                                                                                           
+03-MAR-05                                                                                                                                                                           
+01-JUL-06                                                                                                                                                                           
+17-MAR-07                                                                                                                                                                           
+24-APR-06                                                                                                                                                                           
+23-MAY-06                                                                                                                                                                           
+24-JUL-06                                                                                                                                                                           
+27-OCT-01                                                                                                                                                                           
+15-MAR-05                                                                                                                                                                           
+19-DEC-07                                                                                                                                                                           
+31-DEC-07                                                                                                                                                                           
+31-DEC-07                                                                                                                                                                           
+17-JUN-01                                                                                                                                                                           
+31-DEC-06                                                                                                                                                                           
+31-DEC-07                                                                                                                                                                           
+31-DEC-06                                                                                                                                                                           
+
+117 rows selected.
+
+SQL> select hire_date from employees
+  2  minus
+  3  select end_date from job_history;
+
+HIRE_DATE                                                                                                                                                                           
+---------                                                                                                                                                                           
+13-JAN-01                                                                                                                                                                           
+07-JUN-02                                                                                                                                                                           
+16-AUG-02                                                                                                                                                                           
+17-AUG-02                                                                                                                                                                           
+07-DEC-02                                                                                                                                                                           
+01-MAY-03                                                                                                                                                                           
+18-MAY-03                                                                                                                                                                           
+17-JUN-03                                                                                                                                                                           
+14-JUL-03                                                                                                                                                                           
+17-SEP-03                                                                                                                                                                           
+17-OCT-03                                                                                                                                                                           
+27-JAN-04                                                                                                                                                                           
+30-JAN-04                                                                                                                                                                           
+04-FEB-04                                                                                                                                                                           
+17-FEB-04                                                                                                                                                                           
+04-MAR-04                                                                                                                                                                           
+11-MAY-04                                                                                                                                                                           
+14-JUN-04                                                                                                                                                                           
+18-JUL-04                                                                                                                                                                           
+01-AUG-04                                                                                                                                                                           
+01-OCT-04                                                                                                                                                                           
+05-JAN-05                                                                                                                                                                           
+29-JAN-05                                                                                                                                                                           
+30-JAN-05                                                                                                                                                                           
+16-FEB-05                                                                                                                                                                           
+20-FEB-05                                                                                                                                                                           
+03-MAR-05                                                                                                                                                                           
+10-MAR-05                                                                                                                                                                           
+11-MAR-05                                                                                                                                                                           
+19-MAR-05                                                                                                                                                                           
+24-MAR-05                                                                                                                                                                           
+10-APR-05                                                                                                                                                                           
+14-JUN-05                                                                                                                                                                           
+25-JUN-05                                                                                                                                                                           
+16-JUL-05                                                                                                                                                                           
+24-JUL-05                                                                                                                                                                           
+13-AUG-05                                                                                                                                                                           
+17-AUG-05                                                                                                                                                                           
+20-AUG-05                                                                                                                                                                           
+21-SEP-05                                                                                                                                                                           
+28-SEP-05                                                                                                                                                                           
+30-SEP-05                                                                                                                                                                           
+10-OCT-05                                                                                                                                                                           
+26-OCT-05                                                                                                                                                                           
+30-OCT-05                                                                                                                                                                           
+11-NOV-05                                                                                                                                                                           
+15-DEC-05                                                                                                                                                                           
+24-DEC-05                                                                                                                                                                           
+03-JAN-06                                                                                                                                                                           
+24-JAN-06                                                                                                                                                                           
+05-FEB-06                                                                                                                                                                           
+12-FEB-06                                                                                                                                                                           
+23-FEB-06                                                                                                                                                                           
+07-MAR-06                                                                                                                                                                           
+15-MAR-06                                                                                                                                                                           
+23-MAR-06                                                                                                                                                                           
+24-MAR-06                                                                                                                                                                           
+30-MAR-06                                                                                                                                                                           
+06-APR-06                                                                                                                                                                           
+23-APR-06                                                                                                                                                                           
+24-APR-06                                                                                                                                                                           
+23-MAY-06                                                                                                                                                                           
+24-JUN-06                                                                                                                                                                           
+01-JUL-06                                                                                                                                                                           
+09-JUL-06                                                                                                                                                                           
+11-JUL-06                                                                                                                                                                           
+26-AUG-06                                                                                                                                                                           
+28-SEP-06                                                                                                                                                                           
+03-NOV-06                                                                                                                                                                           
+15-NOV-06                                                                                                                                                                           
+09-DEC-06                                                                                                                                                                           
+14-JAN-07                                                                                                                                                                           
+07-FEB-07                                                                                                                                                                           
+23-FEB-07                                                                                                                                                                           
+17-MAR-07                                                                                                                                                                           
+19-MAR-07                                                                                                                                                                           
+24-MAR-07                                                                                                                                                                           
+10-APR-07                                                                                                                                                                           
+21-MAY-07                                                                                                                                                                           
+24-MAY-07                                                                                                                                                                           
+21-JUN-07                                                                                                                                                                           
+10-AUG-07                                                                                                                                                                           
+15-OCT-07                                                                                                                                                                           
+16-NOV-07                                                                                                                                                                           
+23-NOV-07                                                                                                                                                                           
+07-DEC-07                                                                                                                                                                           
+12-DEC-07                                                                                                                                                                           
+04-JAN-08                                                                                                                                                                           
+13-JAN-08                                                                                                                                                                           
+24-JAN-08                                                                                                                                                                           
+29-JAN-08                                                                                                                                                                           
+03-FEB-08                                                                                                                                                                           
+06-FEB-08                                                                                                                                                                           
+23-FEB-08                                                                                                                                                                           
+08-MAR-08                                                                                                                                                                           
+24-MAR-08                                                                                                                                                                           
+21-APR-08                                                                                                                                                                           
+
+97 rows selected.
+
+SQL> spool off

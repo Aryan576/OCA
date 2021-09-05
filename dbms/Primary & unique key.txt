@@ -1,0 +1,36 @@
+	student		semester
+	1 zzz		1 first
+	2 aaa		2 second
+	3 bbb		3 third
+
+		stream
+		 
+		101 BCA
+		102 MSC.IT
+		103 B.com
+		104 M.com
+		105 BBA
+
+Primary Key Constraint
+	1) table level
+	2) Constraint level
+
+1) 	create table xyz(
+		enrn number(3) primary key,
+		name varchar(20),
+		lastname varchar(20));
+
+2)	create table xyz(
+		enrn number(3),
+		name varchar(20),
+		lastname varchar(20));
+
+	alter table table_name add constraint enrn_pk primary key(roll_no);
+
+	primary key = unique key + null constraint
+
+	Unique key allows null name value while primary key does not allow null value
+
+
+
+

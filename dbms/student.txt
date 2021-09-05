@@ -1,0 +1,27 @@
+syntax
+
+create table table_name(
+Roll_no number,
+Name varchar(20),
+Address varchar(20),
+Contact_number number,
+C number,
+Maths number,
+Total number,
+Grade varchar(20)
+);
+
+
+insert into table_name values(1,'Abhishek','Sabarmati',7600295175,50,45,95,'A');
+insert into table_name values(2,'Aryan','Ramnagar',7600704699,15,45,60,'A');
+insert into table_name values(3,'Dhagash','Arahm',9600295175,50,45,95,'A');
+insert into table_name values(4,'Devla','Shitalkunj',8600295175,50,45,95,'A');
+insert into table_name values(5,'Mana','Shitalkunj near devla house',9990295175,50,45,95,'A');
+insert into table_name values(6,'Dhrumi','Highway park',9900295175,50,45,95,'A');
+insert into table_name values(7,'khushi','Samarthiya',7600295175,50,45,95,'A');
+insert into table_name values(8,'pooja','cg',7600555175,50,45,95,'A');
+insert into table_name values(9,'lata','Sabarmati',7600295175,50,45,95,'A');
+insert into table_name values(10,'jay','Sabarmati',7600295175,50,45,95,'A');
+
+
+

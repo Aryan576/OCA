@@ -1,0 +1,3 @@
+SQL> set lines 180;
+SQL> set pages 180
+SQL> spool "H:\OCA\18-02-2019.txt";

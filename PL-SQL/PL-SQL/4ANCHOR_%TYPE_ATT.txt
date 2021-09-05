@@ -1,0 +1,63 @@
+Anchored datatype
+
+ datatype which you assign to a variable based on a database object.
+ 
+
+Syntax
+
+Variable-name Typed-attribute%Type
+ 
+
+create table students(stu_id number(2),first_name varchar2(8));
+
+desc students;
+
+insert into students values(1,'Clark');
+
+insert into students values(2,'Roy');
+
+now use of %Type att
+
+set serveroutput on;
+DECLARE
+	v_fname students.first_name%TYPE;
+BEGIN
+	SELECT first_name INTO v_fname FROM students
+	WHERE stu_id=1;
+	DBMS_OUTPUT.PUT_LINE(v_fname);
+END;
+/
+
+=====================================
+
+set serveroutput on;
+DECLARE
+	v_fname varchar2(25);
+BEGIN
+	SELECT first_name INTO v_fname FROM students
+	WHERE stu_id=1;
+	DBMS_OUTPUT.PUT_LINE(v_fname);
+END;
+/
+ now alter table and change datatype
+
+alter table students modify first_name char(10);
+
+NOW TRY IT
+
+
+AND NOW
+----------------------------------
+DECLARE
+	v_fname students.first_name%TYPE;
+BEGIN
+	SELECT first_name INTO v_fname FROM students
+	WHERE stu_id=1;
+	DBMS_OUTPUT.PUT.LINE(v_fname);
+END;
+/
+
+ERROR RESOLVED.....
+
+
+

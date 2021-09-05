@@ -1,0 +1,5 @@
+1 to reaname table name 
+
+alter table students rename to bca_students;
+2
+update students set name="abhishek" where rollno=11; 

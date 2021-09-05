@@ -1,0 +1,72 @@
+DML Trigger with before insert update and delete
+
+create table superheroes(sh_name varchar2(20));
+
+set serveroutput on;
+create or replace trigger bi_superheroes
+before insert on superheroes
+for each row
+enable
+declare
+	v_user varchar2(20);
+begin
+	select user into v_user from dual;
+	dbms_output.put_line('You just inserted a line Mr. '||v_user);
+end;
+/
+
+now insert data
+
+insert into superheroes values('Ironman');
+
+see that trigger is activated..
+
+---------------------------------------------------------
+
+now update
+
+set serveroutput on;
+create or replace trigger bu_superheroes
+before update on superheroes
+for each row
+enable
+declare
+	v_user varchar2(20);
+begin
+	select user into v_user from dual;
+	dbms_output.put_line('You just updated line Mr. '||v_user);
+end;
+/
+update superheroes set sh_name='superman' where sh_name='Ironman';
+
+
+-----------------------------------------------------------
+
+
+INSERT UPDATE AND DELETE
+
+set serveroutput on;
+create or replace trigger tr_superheroes
+before insert or delete or update on superheroes
+for each row
+enable
+declare
+	v_user varchar2(20);
+begin
+	select user into v_user from dual;
+	if INSERTING THEN
+	dbms_output.put_line('One row inserted by '||v_user);
+	elsif DELETING THEN
+	dbms_output.put_line('One row Deleted by '||v_user);
+	elsif UPDATING THEN
+	dbms_output.put_line('One row Udated by '||v_user);
+	END IF;
+end;
+/
+
+NOW INSERT UPDATE AND DELTE
+
+insert into superheroes values('Batman');
+update superheroes set sh_name='superman' where sh_name='Batman';
+delete from superheroes where sh_name='superman';
+

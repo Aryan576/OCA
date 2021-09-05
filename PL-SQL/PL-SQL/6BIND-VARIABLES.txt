@@ -1,0 +1,27 @@
+BIND-VARIABLES
+ WE DONOT NEED PL-BLOCK
+JUST 
+1 initializing by execute statements
+VARIABLE v_bind1 VARCHAR2(10);
+EXEC :v_bind1:='Royal';
+
+2nd way of initializing bind vairable in PL-BLCOK
+
+BEGIN
+	:v_bind1:='RaviKanojiya';
+END;
+/ 
+
+PRINT :v_bind1;
+
+
+another way to print current values of bind variable is
+using 	AUTOPRINT
+
+SET AUTOPRINT ON;
+VARIABLE v_bind2 VARCHAR2(20);
+EXEC :v_bind2:='Royal-Technosoft';
+
+
+
+ 

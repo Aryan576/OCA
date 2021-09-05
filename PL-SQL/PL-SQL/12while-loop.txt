@@ -1,0 +1,51 @@
+WHILE LOOP
+
+Best usable when number of iteration to be performed are unknown.
+ 
+Syntex
+
+while condition loop
+ statement 1;
+ statement 1;
+ ...
+ statement 3;
+end loop;
+
+-----------------------------------
+1. Print multiplication table of 10 using WHILE LOOP.
+
+set serveroutput on;
+declare
+	v_counter number:=0;
+	v_result number;
+begin
+	while v_counter<=10 loop
+		
+		v_result := 10* v_counter;
+		dbms_output.put_line('10'||' x '||v_counter||' = '|| v_result);
+		v_counter:=v_counter+1;		
+	end loop;
+	DBMS_OUTPUT.PUT_LINE('Outside the loop');
+end;
+/
+
+2. While loop with Boolean variable as Test condition.
+
+set serveroutput on;
+declare
+	v_test boolean:=TRUE;
+	v_counter number:=0;
+begin
+	while v_test loop
+		v_counter:=v_counter+1;		
+		dbms_output.put_line(v_counter);
+	if v_counter =10 then
+	  v_test:=false;
+	end if;
+	end loop;
+	DBMS_OUTPUT.PUT_LINE('Outside the loop');
+end;
+/
+
+
+

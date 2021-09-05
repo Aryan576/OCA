@@ -1,0 +1,49 @@
+struct calc
+{
+	int no1,no2;	
+
+};
+void main()
+{
+
+	int no1,no2,ans;
+
+
+}
+structure limitation
+
+1 we can access Dm 's of  sturcture in out of students structure 
+2 only create Dm's can't create member function in  stucture 
+3 we can 't use oop's features in c languages we can't deve;ope real life  
+4 varaible creation and valuse intitialisation for structot var
+5we cant  work with  arithmetic contncept
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+c ++ was  developed by bjarne stroustrup--oop's
+1 class
+2 object
+3 abstraction 
+4 encapsulation
+5 inhertence 
+6 polymorphism 
+

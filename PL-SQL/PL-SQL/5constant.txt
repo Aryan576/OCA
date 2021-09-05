@@ -1,0 +1,31 @@
+PL-SQL CONSTANTS
+
+ Constant is a user defined identifier whose value remains unchanged 
+ throughout the program.
+
+Syntax
+
+Constant-name CONSTANT datatype (dw):=value;
+
+you must initialize a constant at its declaration.
+
+
+DECLARE
+	v_pi CONSTANT NUMBER(7,6) := 3.141592;
+BEGIN
+	DBMS_OUTPUT.PUT_LINE(v_pi);
+END;
+/
+
+=======================
+
+
+DECLARE
+	v_pi CONSTANT NUMBER(7,6);
+BEGIN
+	v_pi:=3.141592;
+	DBMS_OUTPUT.PUT_LINE(v_pi);
+END;
+/
+ it will return an error bcox by default v_pi's value is NULL
+SO U MUST INITIALIZE CONSTANT VALUE....

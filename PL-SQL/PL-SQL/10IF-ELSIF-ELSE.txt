@@ -1,0 +1,44 @@
+IF THEN ELSEIF ELSEIF ELSE END IF
+
+SYNTAX
+
+if condition 1 then
+	statement1;
+elsif condition 2 then
+	statement2;
+elsif condition 3 then
+	statement3;
+
+.....
+else
+	statementN;
+END IF;  
+
+IF THEN ELSIF statements is responsible for running the first statement
+for which the condition is true.Once this is done the
+res of the conditions are not evaluated. In case none of
+the conditon is true, then the else statemets run provided that they
+exist; otherwise no action is taken by the IF THEN ELSIF statement.
+
+
+Ex
+
+set serveroutput on;
+declare
+	v_place varchar2(30):= '&enter_place';
+begin
+	if v_place ='Metropolis' then
+	dbms_output.put_line('City is protected by superman');
+	elsif v_place = 'Gotham' then
+	dbms_output.put_line('City is protected by batman');
+	elsif v_place = 'Amazon' then
+	dbms_output.put_line('City is protected by Wonder woman');
+	else
+	dbms_output.put_line('Please call Avengers');
+	end if;
+	dbms_output.put_line('Thanks for contacting us');
+	end;
+	/
+
+
+

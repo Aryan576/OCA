@@ -1,0 +1,47 @@
+Table Auditing using DML tirgger
+
+create table sh_audit(
+	new_name varchar2(50),
+	old_name varchar2(50),
+	user_name varchar2(50),
+	entry_date varchar2(50),
+	operation varchar2(50)
+);
+
+
+set serveroutput on;
+create or replace trigger superheroes_audit
+before insert or delete or update on superheroes
+for each row
+enable
+declare
+	v_user varchar2(30);
+	v_date varchar2(30);
+begin
+	select user,to_char(sysdate,'DD/MON/YYYY HH24:MI:SS') into v_user,v_date from dual;
+	if INSERTING THEN
+	insert into sh_audit(new_name,old_name,user_name,entry_date,operation)
+	values(:NEW.sh_name,NULL,v_user,v_date,'Insert');
+	elsif DELETING THEN
+	insert into sh_audit(new_name,old_name,user_name,entry_date,operation)
+	values(NULL,:OLD.sh_name,v_user,v_date,'Delete');
+	elsif UPDATING THEN
+	insert into sh_audit(new_name,old_name,user_name,entry_date,operation)
+	values(:NEW.sh_name,:OLD.sh_name,v_user,v_date,'Update');
+	END IF;
+end;
+/
+
+
+NEW 
+	Allow you to access a row currently being processed.
+OLD
+	Allow you to access a row which is already being either
+	Upldated or Deleted from the superheroes table.
+
+Pseudo Record.Source_column_name
+(NEW/OLD)
+
+NOW INSERT UPDATE AND DELETE ON SUPERHEROES TABLE
+AND CHECK SH_AUDIT TABLE
+

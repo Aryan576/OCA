@@ -1,0 +1,44 @@
+syntax
+
+create table subject(
+Subcode number primary key,
+Subname varchar(20),
+Subhours number);
+
+alter table subject add constraint Subcode_pk primary key (subcode);
+
+create table std_sub(
+Rollno number,
+Subcode number);
+
+alter table std_sub add constraint roll_fk foreign key(Roll_no)
+references student (Roll_no);
+
+alter table std_sub add constraint roll_fk foreign key(Subcode)
+references subject (Subcode);
+
+insert into subject;
+
+insert into subject values(101,'c',40);
+insert into subject values(102,'Html',30);
+insert into subject values(103,'Maths',50);
+insert into subject values(104,'c++',30);
+insert into subject values(105,'Java',35);
+
+insert into std_sub;
+
+insert into std_sub values(1,101);
+insert into std_sub values(2,101);
+insert into std_sub values(3,102);
+insert into std_sub values(4,102);
+insert into std_sub values(5,103);
+
+
+select * from student where rollno in(select rollno from std_sub where subcode=101);
+
+
+
+
+
+ 
+

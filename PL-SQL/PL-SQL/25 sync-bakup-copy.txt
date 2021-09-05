@@ -1,0 +1,26 @@
+Synchronized backup copy
+
+table 1 main table is superheroes
+table 2 backup table
+
+desc superheroes;
+
+create table superheroes_backup AS select * from superheroes 1=2;
+
+create OR REPLACE trigger sh_backup
+before insert or delete or update on superheroes
+for each row
+enable
+begin
+	if inserting then
+	insert into superheroes_backup (sh_name) values(:NEW.sh_name);
+	elsif deleting then
+	delete from superheroes_backup where sh_name=:OLD.sh_name;
+	elsif updating then
+	update superheroes_backup set sh_name=:NEW.sh_name where sh_name=:OLD.sh_name;
+	end if;
+end;
+/
+
+now try to insert update and delete on superheroes table	
+

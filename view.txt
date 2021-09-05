@@ -1,0 +1,322 @@
+SQL> rem view
+SQL> 
+SQL> rem view 1)simple 2) complex
+SQL> rem view stores subquery
+SQL> rem simple view------- subquery one table
+SQL> rem view ------- subquery more than on e table  and function group by
+SQL> 
+SQL> rem simple view insert update delete table
+SQL> 
+SQL> create view d10 as first_name,last_name,salary,department_id from employees
+  2  where department_id=10;
+create view d10 as first_name,last_name,salary,department_id from employees
+                   *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword 
+
+
+SQL> create view d10 as select first_name,last_name,salary,department_id from employees
+  2  where department_id=10;
+
+View created.
+
+SQL> create view d20 as first_name,last_name,salary,department_id from employees
+  2  where department_id=10;
+create view d20 as first_name,last_name,salary,department_id from employees
+                   *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword 
+
+
+SQL> create view d10 as select first_name,last_name,salary,department_id from employees
+  2  where department_id=20;
+create view d10 as select first_name,last_name,salary,department_id from employees
+            *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> create view d20 as select first_name,last_name,salary,department_id from employees
+  2  where department_id=20;
+
+View created.
+
+SQL> create view d30 as select first_name,last_name,salary,department_id from employees
+  2  where department_id=30;
+
+View created.
+
+SQL> create view emp as select first_name||last_name fullname,salary monthly
+  2  ,salary *12 annual_sal from employees where salary>10000;
+
+View created.
+
+SQL> select * from emp
+  2  ;
+
+FULLNAME                                         MONTHLY ANNUAL_SAL             
+--------------------------------------------- ---------- ----------             
+MichaelHartstein                                   13000     156000             
+ShelleyHiggins                                     12008     144096             
+StevenKing                                         24000     288000             
+NeenaKochhar                                       17000     204000             
+LexDe Haan                                         17000     204000             
+NancyGreenberg                                     12008     144096             
+DenRaphaely                                        11000     132000             
+JohnRussell                                        14000     168000             
+KarenPartners                                      13500     162000             
+AlbertoErrazuriz                                   12000     144000             
+GeraldCambrault                                    11000     132000             
+
+FULLNAME                                         MONTHLY ANNUAL_SAL             
+--------------------------------------------- ---------- ----------             
+EleniZlotkey                                       10500     126000             
+ClaraVishney                                       10500     126000             
+LisaOzer                                           11500     138000             
+EllenAbel                                          11000     132000             
+
+15 rows selected.
+
+SQL> select
+  2  *
+  3  from emp
+  4  where salary>50000
+  5  ;
+where salary>50000
+      *
+ERROR at line 4:
+ORA-00904: "SALARY": invalid identifier 
+
+
+SQL> select
+  2  ;
+
+*
+ERROR at line 2:
+ORA-00936: missing expression 
+
+
+SQL> select * from emp where monthly>50000;
+
+no rows selected
+
+SQL> select * from emp where monthly>4000;
+
+FULLNAME                                         MONTHLY ANNUAL_SAL             
+--------------------------------------------- ---------- ----------             
+MichaelHartstein                                   13000     156000             
+ShelleyHiggins                                     12008     144096             
+StevenKing                                         24000     288000             
+NeenaKochhar                                       17000     204000             
+LexDe Haan                                         17000     204000             
+NancyGreenberg                                     12008     144096             
+DenRaphaely                                        11000     132000             
+JohnRussell                                        14000     168000             
+KarenPartners                                      13500     162000             
+AlbertoErrazuriz                                   12000     144000             
+GeraldCambrault                                    11000     132000             
+
+FULLNAME                                         MONTHLY ANNUAL_SAL             
+--------------------------------------------- ---------- ----------             
+EleniZlotkey                                       10500     126000             
+ClaraVishney                                       10500     126000             
+LisaOzer                                           11500     138000             
+EllenAbel                                          11000     132000             
+
+15 rows selected.
+
+SQL> create view iok as select max(salary) sal,sum(salary)add,avg(salary)average,min(salary)minimum
+  2  ,department_id from employees group by department_id;
+create view iok as select max(salary) sal,sum(salary)add,avg(salary)average,min(salary)minimum
+                                                     *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> create view iok as select max(salary) sal,sum(salary)add,avg(salary)average,min(salary)minimum,
+  2  department_id from employees group by department_id;
+create view iok as select max(salary) sal,sum(salary)add,avg(salary)average,min(salary)minimum,
+                                                     *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> create view iok as select max(salary) sal,sum(salary) add,avg(salary) average,min(salary) minimum,
+  2  department_id from employees group by department_id;
+create view iok as select max(salary) sal,sum(salary) add,avg(salary) average,min(salary) minimum,
+                                                      *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> create view iok as select max(salary) sal,sum(salary) ad,avg(salary) average,min(salary) minimum,
+  2  department_id from employees group by department_id;
+
+View created.
+
+SQL> select * from iok;
+
+       SAL         AD    AVERAGE    MINIMUM DEPARTMENT_ID                       
+---------- ---------- ---------- ---------- -------------                       
+     12008      51608 8601.33333       6900           100                       
+     11000      24900       4150       2500            30                       
+      7000       7000       7000       7000                                     
+     13000      19000       9500       6000            20                       
+     10000      10000      10000      10000            70                       
+     24000      58000 19333.3333      17000            90                       
+     12008      20308      10154       8300           110                       
+      8200     156400 3475.55556       2100            50                       
+      6500       6500       6500       6500            40                       
+     14000     304500 8955.88235       6100            80                       
+      4400       4400       4400       4400            10                       
+
+       SAL         AD    AVERAGE    MINIMUM DEPARTMENT_ID                       
+---------- ---------- ---------- ---------- -------------                       
+      9000      28800       5760       4200            60                       
+
+12 rows selected.
+
+SQL> desc employees;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPLOYEE_ID                               NOT NULL NUMBER(6)
+ FIRST_NAME                                         VARCHAR2(20)
+ LAST_NAME                                 NOT NULL VARCHAR2(25)
+ EMAIL                                     NOT NULL VARCHAR2(25)
+ PHONE_NUMBER                                       VARCHAR2(20)
+ HIRE_DATE                                 NOT NULL DATE
+ JOB_ID                                    NOT NULL VARCHAR2(10)
+ SALARY                                             NUMBER(8,2)
+ COMMISSION_PCT                                     NUMBER(2,2)
+ MANAGER_ID                                         NUMBER(6)
+ DEPARTMENT_ID                                      NUMBER(4)
+
+SQL> create view as dep select first_name,hire_date from employees
+  2  where substr(hire_date,-2,2)=05;
+create view as dep select first_name,hire_date from employees
+            *
+ERROR at line 1:
+ORA-00999: invalid view name 
+
+
+SQL> create view as de select first_name,hire_date from employees
+  2  where substr(hire_date,-2,2)=05;
+create view as de select first_name,hire_date from employees
+            *
+ERROR at line 1:
+ORA-00999: invalid view name 
+
+
+SQL> create view  dep as  select first_name,hire_date from employees
+  2  where substr(hire_date,-2,2)=05;
+
+View created.
+
+SQL> select hire_date from employee
+  2  
+SQL> create view emphire as select first_name,hire_date from employees
+  2  where substr(hire_date,4,3) in ('MAR','APR','MAY');
+
+View created.
+
+SQL> select * from emphire
+  2  ;
+
+FIRST_NAME           HIRE_DATE                                                  
+-------------------- ---------                                                  
+Bruce                21-MAY-07                                                  
+Jose Manuel          07-MAR-06                                                  
+Alexander            18-MAY-03                                                  
+Adam                 10-APR-05                                                  
+Payam                01-MAY-03                                                  
+Steven               08-MAR-08                                                  
+TJ                   10-APR-07                                                  
+Joshua               06-APR-06                                                  
+Randall              15-MAR-06                                                  
+Alberto              10-MAR-05                                                  
+David                24-MAR-05                                                  
+
+FIRST_NAME           HIRE_DATE                                                  
+-------------------- ---------                                                  
+Christopher          30-MAR-06                                                  
+Patrick              04-MAR-04                                                  
+Lindsey              10-MAR-05                                                  
+Danielle             19-MAR-07                                                  
+Sundar               24-MAR-08                                                  
+Amit                 21-APR-08                                                  
+Lisa                 11-MAR-05                                                  
+Harrison             23-MAR-06                                                  
+Elizabeth            24-MAR-07                                                  
+Sundita              21-APR-08                                                  
+Ellen                11-MAY-04                                                  
+
+FIRST_NAME           HIRE_DATE                                                  
+-------------------- ---------                                                  
+Alyssa               19-MAR-05                                                  
+Jonathon             24-MAR-06                                                  
+Jack                 23-APR-06                                                  
+Kimberely            24-MAY-07                                                  
+Britney              03-MAR-05                                                  
+Vance                17-MAR-07                                                  
+Alana                24-APR-06                                                  
+Kevin                23-MAY-06                                                  
+
+30 rows selected.
+
+SQL> create view aname as select first_name from employees
+  2  where substr(first_name,1,1)='A';
+
+View created.
+
+SQL> create view aname as select first_name from employees
+  2  where substr(first_name,1,1)='B';
+create view aname as select first_name from employees
+            *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> create view bname as select first_name from employees
+  2  where substr(first_name,1,1)='B';
+
+View created.
+
+SQL> create view cname as select first_name from employees
+  2  where substr(first_name,1,1)='C';
+
+View created.
+
+SQL> select * from aname;
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Amit                                                                            
+Alexis                                                                          
+Anthony                                                                         
+Alberto                                                                         
+Adam                                                                            
+Alexander                                                                       
+Alyssa                                                                          
+Alexander                                                                       
+Allan                                                                           
+Alana                                                                           
+
+10 rows selected.
+
+SQL> select * from bname;
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Bruce                                                                           
+Britney                                                                         
+
+SQL> select * from cname;
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Curtis                                                                          
+Charles                                                                         
+Christopher                                                                     
+Clara                                                                           
+
+SQL> spool off

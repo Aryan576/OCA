@@ -1,0 +1,93 @@
+Cursor?
+
+Cursor is a pointer to a memory  area called context area.
+
+Assigned to hold the information about the processing of a SELECT 
+statement or DML statment.
+
+Context area?
+
+Context area is a memory region inside the PGA
+which helps oracle server in processing an SQL
+statement by holding the important information
+about that statement.
+
+Rows returned by a query.
+Number of rows processed by a query.
+
+Using  cursor you can control the context area as it is a pointer
+to the same.
+
+
+There are two type of cursor
+
+ Implicit Cursor
+
+Automatically created by the oracle server
+User cannot control the behavior of these cursors.
+
+Oracle server creates an implicit cursor for any
+PL/SQL block which executed an SQL statement.
+---------------------------------------------
+Explicit Cursor
+
+Explicit cursors are user defined cursors
+
+
+Steps for creating an Explicit Cursor
+
+Declare
+open
+fetch
+close
+
+Declare
+	Declaring a cursor means initializing a cursor into memory.
+
+Syntax of Declare
+
+	CURSOR cursor_name IS select_statement;
+-------------------------------------------------------------
+open
+	in order to put that cursor to work we have to open it first.
+
+	when you open a cursor the memory will be alloted to it
+
+
+Syntax of Open
+	OPEN cursor_name;
+-------------------------------------------------
+
+Fetch
+
+The process of retrieving the data from the cursor is called fetching.
+
+Syntax of Fetch
+
+FETCH cursor_name INTO pl/variable;
+
+		or
+FETCH cursor_name INTO pl/record;
+------------------------------------------------
+
+Close
+
+When the server comes across the closing statement of a cursor
+it will all the resources associated with it;
+
+Syntax of Close
+
+CLOSE cursor_name;
+
+----------------------------------------------
+Basic Programming structure
+
+declare
+	cursor cursor_name is select_statement;
+begin
+	open cursor_name;
+	fetch cursor_name into pl_sql variable;
+	close cursor_name;
+end;
+/
+

@@ -1,0 +1,19 @@
+Control Statements 
+
+Statements which allow you to control the execution flow of the
+program depending on a condition.
+
+Statements in the program are not necessarily executed in a
+sequence rather one ot other group of statements are executed
+depending on the evaluation of a condition. 
+
+Types 
+			Control Statements
+				|
+	----------------------------------------------------
+	|						   |
+IF Statemets					Case statements
+	|						|
+-------------------------			----------------
+|	   |		|			|		|
+IF THEN  IF THEN ELSE  IF THEN ELSEIF	     Simple Case	Searched case

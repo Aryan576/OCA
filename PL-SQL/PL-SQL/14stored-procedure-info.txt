@@ -1,0 +1,15 @@
+Stored Procedures ?
+
+Procedures are named PL/SQL blocks thus they can be reused.
+Unlike PL/SQL funcions a stored procedure does not return any value.
+
+Syntax
+
+Create [or replace] procedure pro_name(para1,para2,...)
+is
+	declare statements
+begin
+	executable statements
+end procedure name;
+/
+

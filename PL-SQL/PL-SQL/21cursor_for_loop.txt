@@ -1,0 +1,22 @@
+Cursor For loop
+
+For loop_index in cursor_name
+	loop
+	statements...
+	end loop;
+
+---------------------------------------------
+
+set serveroutput on;
+
+declare
+	cursor cur_royal is
+	select first_name,last_name from employees
+	where employee_id>200;
+begin
+	for l_idx in cur_royal
+	loop
+	dbms_output.put_line(l_idx.first_name||' ' ||l_idx.last_name);
+	end loop;
+end;
+/

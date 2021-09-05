@@ -1,0 +1,56 @@
+							PL-SQL
+=====================================================================================================================
+
+1 PROCEDURAL LANGUAGE/STRUCTURE QUERY LANGUAGE.
+2 Significant Member Of Oracle Programming Tool Set
+3 Extensively Used to code SERVER SIDE programming.
+4 case-insensitive programming language.
+
+--------------------------------------------------------------------------------------
+BLOCKS - BLOCK STRUCTURE QUERY LANGUAGE.
+
+Blocks are basic programming units in PL/SQL programming lang.
+
+TYPES OF BLOCKS
+
+Anonymous Blocks and Named Block
+
+in Anonymous blocks- Declaration Section and Exception-hand section ARE optional
+but Execution Section are Mendatory
+
+---------------------------------------------------------------------------------------
+Prototype of Anonymous Block
+
+DECLARE (opt)
+	Declaration statments
+BEGIN
+	Executable statments
+Exceptions (opt)
+	Exception Handling Statments
+END;
+
+/
+-------------------------------------------
+Declaration Section
+
+1. First section of PL/SQL block
+2. Contains defination of PL/SQL identifiers 
+   such as variables, const, cursors
+3. All local variables used in the program
+   are defined and documented.
+
+--------------------------------------------
+EXECUTION SECTION
+
+1. Contains executable statements
+2. Begins with the Keyword BEGIN and ends 
+   with the Keyword END.
+3. Only mandatory section in PL-SQL Block
+4. All DML-DDL cmds and SQL built-in functions.
+-------------------------------------------------
+
+EXCEPTION HANDLING SECTION 
+1.Last section of PL/SQL block
+2.Optional just like the declaration section
+3.Contains statements that are executed when a runtime error occurs
+4.All exception handling code goes here.

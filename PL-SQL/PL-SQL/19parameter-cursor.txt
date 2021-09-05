@@ -1,0 +1,26 @@
+set serveroutput on;
+
+declare
+	v_name varchar2(30);
+--declare the cursor
+	cursor cur_royal(var_eid varchar2) is
+	select first_name from employees
+	where employee_id<var_eid;
+begin
+	open cur_royal(105);
+	loop
+	fetch cur_royal into v_name;
+	exit when cur_royal%NOTFOUND;
+	dbms_output.put_line(v_name);
+	
+	end loop;
+	close cur_royal;
+end;
+/
+
+
+You can specify as many paramerts to your cursor as you
+need for each parameter.
+but always make sure that when you OPEN the
+cursor you need to include a corresponding
+argument value in the parameter list for each parameter.

@@ -1,0 +1,62 @@
+Functions
+
+A self-contained sub-program that is meant to do some specific well defined task;
+
+Functions are named PL/SQL block which means
+they can be stred into the database as a database object and can be reused.
+
+
+Types of subroutines or say sub-programs
+
+	1. PL/SQL functions and
+	2. Pl/SQL procedures.
+
+Syntax of PL/SQL functions
+
+create or replace function function_name
+(parameter 1, parameter 2,..) Return datatype
+is
+	declare variabel, constant etc..
+begin
+	executable statements
+	return (return value);
+end;
+
+
+CREATE OR REPLACE FUNCTION circle_area (radius number)
+return number 
+is
+pi constant number (7,3):= 3.141;
+area number(7,3);
+begin
+	area:=pi*(radius * radius);
+	return area;
+end;
+/
+--------------------------------
+ to run function
+
+
+set serveroutput on;
+begin
+	dbms_output.put_line(circle_area(25));
+end;
+/
+
+-----------------------------
+
+set serveroutput on;
+declare
+	v_area number(7,3);
+begin
+	v_area:= circle_area(25);
+	dbms_output.put_line(v_area);
+end;
+/
+
+
+
+
+
+
+ 

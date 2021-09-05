@@ -1,0 +1,31 @@
+IF THEN ELSE
+
+Drawback
+
+IF THEN ELSE execute sequence of statements only when the condition is evaluated to be true;
+
+
+Syntax
+
+IF condition THEN
+	statement 1;
+ELSE
+	statement 2;
+END IF;
+	statement 3; 
+
+
+EX:-
+
+SET SERVEROUTPUT ON;
+DECLARE
+	v_num number:= &enter_number;
+BEGIN
+	IF MOD(v_num,2)=0 THEN
+		DBMS_OUTPUT.PUT_LINE(v_num||'Is Even');
+	ELSE
+		DBMS_OUTPUT.PUT_LINE(v_num||'Is Odd');
+	END IF;
+		DBMS_OUTPUT.PUT_LINE('If Then Else Constuct Complete');
+end;
+/

@@ -1,0 +1,10 @@
+defination of constructor 
+
+1 constructor must be in public scope .
+2 consturctor name must be same as class name.
+3consturctor is a special function .
+4 consturcotr has not any return type.
+5 whenever object will create at that time compiler will be call construvtor during run time 
+6 we can define constructor overloading in current class.
+7 types of constructor 
+	1.1 default constructor 

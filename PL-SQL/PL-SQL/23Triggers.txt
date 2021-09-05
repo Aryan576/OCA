@@ -1,0 +1,43 @@
+Triggers
+
+specialized stored programs which execute implicitly when a triggering
+event occurs
+
+Events
+
+A DML Statements
+A DDL Statements
+A Sytem event.
+A User event.
+
+Types of triggers
+
+1 DML triggers
+2 DDL triggers
+3 System/db event trigger
+4 Instead-of triggers
+5 Compound Triggers
+
+Syntax
+
+create or replace trigger trigger_name
+{before|after} triggering_event ON table_name
+[FOR EACH ROW] [FOLLOWS another_trigger_name]
+[ENABLE/DISABLE] [WHEN condition]
+
+DECLARE
+	declaration stat
+BEGIN
+	EXECUTABLE STAT.
+END;
+/
+
+USES
+
+Enforce business rules
+Gain Strong Control over the security
+Collect statistical information
+Automatically Generate Vaues
+Perevent Invalid Transactions
+
+

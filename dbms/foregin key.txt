@@ -1,0 +1,6 @@
+alter table table_name add constraint con_name_fk foregin key(field) references
+Parent_table_name(field_name);
+
+ex:
+
+alter table subject 

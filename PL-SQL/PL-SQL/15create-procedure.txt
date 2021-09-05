@@ -1,0 +1,24 @@
+CREATE PROCEDURE
+
+create or replace procedure pr_royal is
+ var_name varchar2(20) := 'Ravi';
+ var_web varchar2(20):= 'royaltechnosoft.com';
+begin
+
+ dbms_output.put_line('Whats up students? i am '||var_name||' from ' ||var_web);
+end pr_royal;
+/
+
+set serveroutput on;
+execute pr_royal;
+exec pr_royal;
+
+or
+
+begin
+	pr_royal;
+end;
+/
+
+write a stored procedure and try calling it using named
+PL/SQL block such as as PL/SQL function or a trigger.

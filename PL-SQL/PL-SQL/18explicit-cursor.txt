@@ -1,0 +1,22 @@
+Explicit Cursor
+
+set serveroutput on;
+
+declare
+	v_name varchar2(30);
+	v_eid number(4);
+--declare the cursor
+	cursor cur_royal is
+	select first_name,employee_id from employees
+	where employee_id<105;
+begin
+	open cur_royal;
+	loop
+	fetch cur_royal into v_name,v_eid;
+	
+	dbms_output.put_line(v_name||v_eid);
+	exit when cur_royal%NOTFOUND;
+	end loop;
+	close cur_royal;
+end;
+/

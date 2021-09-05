@@ -1,0 +1,60 @@
+loops
+
+Loops execute block of statments or part of a program several times
+
+Types of Loops
+
+	1 Simple Loop
+	2 While Loop
+	3 Numeric For Loop
+	4 Cursor For Loop
+
+-----------------------------------------------------
+
+1. Simple Loop
+
+Syntex
+
+	Loop
+	  statement 1;
+	  statement 2;
+	  .....
+	  statement 3;
+	END LOOP;
+
+Ex:-
+
+set serveroutput on;
+declare
+	v_counter number:=0;
+	v_result number;
+begin
+	loop
+		v_counter:=v_counter+1;
+		v_result := 10* v_counter;
+		dbms_output.put_line('10'||' x '||v_counter||' = '|| v_result);
+		--exit condition
+		if v_counter>=10 then
+		  exit;
+		end if;
+	end loop;
+end;
+/
+
+--------------------------
+
+set serveroutput on;
+declare
+	v_counter number:=0;
+	v_result number;
+begin
+	loop
+		v_counter:=v_counter+1;
+		v_result := 10* v_counter;
+		dbms_output.put_line('10'||' x '||v_counter||' = '|| v_result);
+		--exit condition
+		exit when v_counter>=10;
+		
+	end loop;
+end;
+/

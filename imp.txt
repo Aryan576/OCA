@@ -1,0 +1,7 @@
+SQL> select sum(salary),min(salary),max(salary),count(*) from employees;
+
+SUM(SALARY) MIN(SALARY) MAX(SALARY)   COUNT(*)                                  
+----------- ----------- ----------- ----------                                  
+     691416        2100       24000        107                                  
+
+SQL> spool off

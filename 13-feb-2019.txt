@@ -1,0 +1,153 @@
+SQL> rem single query
+SQL> 
+SQL> select first_name,salary from employees where salary>(select salary from employees where first_name='den');
+
+no rows selected
+
+SQL> select first_name,salary from employees where salary>(select salary from employees where first_name='Den');
+
+FIRST_NAME               SALARY                                                 
+-------------------- ----------                                                 
+Steven                    24000                                                 
+Neena                     17000                                                 
+Lex                       17000                                                 
+Nancy                     12008                                                 
+John                      14000                                                 
+Karen                     13500                                                 
+Alberto                   12000                                                 
+Lisa                      11500                                                 
+Michael                   13000                                                 
+Shelley                   12008                                                 
+
+10 rows selected.
+
+SQL> select first_name,salary from employees where salary>=(select salary from employees where first_name='Den');
+
+FIRST_NAME               SALARY                                                 
+-------------------- ----------                                                 
+Steven                    24000                                                 
+Neena                     17000                                                 
+Lex                       17000                                                 
+Nancy                     12008                                                 
+Den                       11000                                                 
+John                      14000                                                 
+Karen                     13500                                                 
+Alberto                   12000                                                 
+Gerald                    11000                                                 
+Lisa                      11500                                                 
+Ellen                     11000                                                 
+
+FIRST_NAME               SALARY                                                 
+-------------------- ----------                                                 
+Michael                   13000                                                 
+Shelley                   12008                                                 
+
+13 rows selected.
+
+SQL> select first_name,salary from employees where salary in(select salary from employees where first_name='Kevin');
+
+FIRST_NAME               SALARY                                                 
+-------------------- ----------                                                 
+Kevin                      5800                                                 
+Kevin                      3000                                                 
+Anthony                    3000                                                 
+
+SQL> select first_name,salary from employees where salary >all(select salary from employees where first_name='Kevin');
+
+FIRST_NAME               SALARY                                                 
+-------------------- ----------                                                 
+Bruce                      6000                                                 
+Pat                        6000                                                 
+Sundita                    6100                                                 
+Amit                       6200                                                 
+Charles                    6200                                                 
+Sundar                     6400                                                 
+Shanta                     6500                                                 
+Susan                      6500                                                 
+David                      6800                                                 
+Luis                       6900                                                 
+Oliver                     7000                                                 
+
+FIRST_NAME               SALARY                                                 
+-------------------- ----------                                                 
+Sarath                     7000                                                 
+Kimberely                  7000                                                 
+Mattea                     7200                                                 
+Elizabeth                  7300                                                 
+William                    7400                                                 
+Nanette                    7500                                                 
+Louise                     7500                                                 
+Ismael                     7700                                                 
+Jose Manuel                7800                                                 
+Payam                      7900                                                 
+Matthew                    8000                                                 
+
+FIRST_NAME               SALARY                                                 
+-------------------- ----------                                                 
+Christopher                8000                                                 
+Lindsey                    8000                                                 
+John                       8200                                                 
+Adam                       8200                                                 
+William                    8300                                                 
+Jack                       8400                                                 
+Jonathon                   8600                                                 
+Alyssa                     8800                                                 
+Alexander                  9000                                                 
+Daniel                     9000                                                 
+Peter                      9000                                                 
+
+FIRST_NAME               SALARY                                                 
+-------------------- ----------                                                 
+Allan                      9000                                                 
+Patrick                    9500                                                 
+Danielle                   9500                                                 
+David                      9500                                                 
+Tayler                     9600                                                 
+Hermann                   10000                                                 
+Harrison                  10000                                                 
+Janette                   10000                                                 
+Peter                     10000                                                 
+Clara                     10500                                                 
+Eleni                     10500                                                 
+
+FIRST_NAME               SALARY                                                 
+-------------------- ----------                                                 
+Gerald                    11000                                                 
+Den                       11000                                                 
+Ellen                     11000                                                 
+Lisa                      11500                                                 
+Alberto                   12000                                                 
+Shelley                   12008                                                 
+Nancy                     12008                                                 
+Michael                   13000                                                 
+Karen                     13500                                                 
+John                      14000                                                 
+Lex                       17000                                                 
+
+FIRST_NAME               SALARY                                                 
+-------------------- ----------                                                 
+Neena                     17000                                                 
+Steven                    24000                                                 
+
+57 rows selected.
+
+SQL> select first_name,salary,department_id from employees where salary>=
+  2  
+SQL> select first_name,salary,department_id from employees where salary>=
+  2  select salary from employees where first_name='Kevin')and job_id in(select job_id from employees where first_name='Kevin');
+select salary from employees where first_name='Kevin')and job_id in(select job_id from employees where first_name='Kevin')
+*
+ERROR at line 2:
+ORA-00936: missing expression 
+
+
+SQL> select first_name,salary,department_id from employees where salary>=
+  2  (select salary from employees where first_name='Kevin')and job_id in(select job_id from employees where first_name='Kevin');
+(select salary from employees where first_name='Kevin')and job_id in(select job_id from employees where first_name='Kevin')
+ *
+ERROR at line 2:
+ORA-01427: single-row subquery returns more than one row 
+
+
+SQL> select first_name,salary,department_id from employees where salary>=
+  2  

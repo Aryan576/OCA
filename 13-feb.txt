@@ -1,0 +1,10 @@
+SQL> select first_name,salary,department_id from employees where salary in
+  2  (select salary from employees where first_name='Kevin')and job_id in(select job_id from employees where first_name='Kevin');
+
+FIRST_NAME               SALARY DEPARTMENT_ID                                   
+-------------------- ---------- -------------                                   
+Anthony                    3000            50                                   
+Kevin                      3000            50                                   
+Kevin                      5800            50                                   
+
+SQL> 

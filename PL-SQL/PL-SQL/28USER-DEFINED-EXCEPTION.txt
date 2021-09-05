@@ -1,0 +1,101 @@
+User-Defined EXCEPTIONS
+
+1. Declare a variable of exception datatype
+2. Raise the Exception
+3. Handle the Exception
+
+
+declare
+	var_dividend number:=24;
+	var_divisor number:=6;
+	var_result number;
+	ex_divezero EXCEPTION;
+begin
+	if var_divisor =0 then
+		raise ex_divezero; 
+	
+			
+	end if;
+var_result := var_dividend/var_divisor;
+DBMS_OUTPUT.PUT_LINE('Result = ' || var_result);
+
+EXCEPTION WHEN ex_divezero then
+	DBMS_OUTPUT.PUT_LINE('Error .....!- your divisor is ZERO');
+END;
+/
+
+TRY TO RUN AND SEE THE ERROR
+THEN
+CHANGE VALUE 	var_divisor number:=8; AND CHECK RESULT
+
+=====================================================
+
+USING RAISE_APPLICATION_ERROR
+
+RAISE_APPLICATION_ERROR is a procedure which comes in-built with oracle software.
+Combining both the error number and the custom error
+message you can compose an error string 
+which looks similar to those default error strings which
+are displyed by oracle engine when an error occurs.
+
+if you want custom popup message user ACCEPT cmd
+
+ACCEPT var_age NUMBER PROMPT 'What is your AGE?';
+
+declare
+	age number := &var_age;
+begin
+	if age<18 then
+	RAISE_APPLICATION_ERROR(-20008,'You shoud be 18 or above for the DIRNKS!');
+	end if;
+
+dbms_output.put_line('Sure, What would you like to have?');
+
+Exception when others then
+dbms_output.put_line(SQLERRM);
+END;
+/
+
+=================================================
+
+Using PRAGMA EXCEPTIOPN_INIT funcition
+
+What is PRAGMA EXCEPTIOPN_INIT?
+
+using the PRAGMA EXCEPTIOPN_INIT we can associate an exception
+name with an oracle error number.
+
+we can use that name in designing the exception handler for the error.
+EX SYNTAX
+
+PRAGMA EXCEPTION_INIT(ex_age,-20008);
+
+-- PRAGAM is a KEYWORD 
+-- WITH TWO PARAMETERS(FIRST ONE IS THE EXCEPTION VARIABLE IS 	ex_age,and SECOND PARAMERTER IS THE NUMBER AND THE NUBER 
+BETWEEN -20000 TO -29999 )
+
+declare
+	ex_age EXCEPTION;
+	age NUMBER :=17;
+	PRAGMA EXCEPTION_INIT(ex_age,-20008);
+BEGIN
+	IF age<18 then
+	RAISE_APPLICAION_ERROR(-20008,'You should be 18 or above for the drinks!');
+	end if;
+
+	DBMS_OUTPUT.PUT_LINE('Sure ! What you like to have?');
+	
+	EXCEPTION WHEN ex_age THEN
+	DBMS_OUTPUT.PUT_LINE(SQLERRM);
+END;
+/
+
+
+
+	
+ 
+
+
+
+
+

@@ -1,0 +1,6 @@
+1. to update the the row we use 
+   update student set name='jay' where rollno=1;
+
+2. to delete the row we use
+   delete from employee where roll_no=1;
+	 

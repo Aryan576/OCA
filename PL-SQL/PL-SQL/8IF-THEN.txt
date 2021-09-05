@@ -1,0 +1,36 @@
+IF THEN CONDITON
+
+Syntax
+
+	IF condition THEN
+	  Statement1;
+		...
+	  Statement N;
+	END IF;
+
+EXAMPLE
+
+SET SERVEROUTPUT ON;
+
+DECLARE
+	v_num number:= &no;
+BEGIN
+	IF v_num<10 THEN
+	 DBMS_OUTPUT.PUT_LINE('Inside the IF');
+	END IF;
+	 DBMS_OUTPUT.PUT_LINE('Outside the IF');
+END;
+/ 
+note:- Change v_num by >10 and see the output
+
+
+DECLARE
+	v_web varchar2(30):= 'royaltechnosoft.com';
+	v_owner varchar2(30) := 'Dhiraj sir';
+BEGIN
+	IF v_web='royaltechnosoft.com' AND v_owner='Dhiraj sir' THEN
+	 DBMS_OUTPUT.PUT_LINE('Evrything is Awesome');
+	END IF;
+	 DBMS_OUTPUT.PUT_LINE('Evrything is fine');
+END;
+/

@@ -1,0 +1,30 @@
+1.for line linesize we use this command
+--------------------------------------- 
+ set linesize 400;
+ select * from table_name;
+
+2. * is use for the all columns of the table
+
+3. desc table_name; for description
+
+4. insert into table_name(&rn,&name);
+
+5. / for repeating the last query
+
+6. ctrl+c for exit
+
+7. where is use to display the row
+
+8. or is use for 2 
+
+9. and for multiple we use address in ('Sabaramti',Cg');
+
+10. for integer we use number
+
+11. for character we use char is for 1 to 128 and varchar is universal.
+
+12. commit; is use to save the data
+
+13. to insert value we use insert table_name value(column1,column2,...);
+
+14.to insert value by user we use insert table_name value(&column1,&column2,...);
